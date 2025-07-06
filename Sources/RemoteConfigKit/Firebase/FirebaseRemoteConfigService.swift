@@ -5,8 +5,8 @@
 //  Created by Eilon Krauthammer on 23/11/2023.
 //
 
-#if canImport(FirebaseRemoteConfig)
-import FirebaseRemoteConfig
+#if canImport(Firebase)
+import Firebase
 
 /// Firebase implementation of RemoteConfigClient
 /// Only available when Firebase is imported in the consuming project
