@@ -34,7 +34,7 @@ public class RemoteConfigService {
     
     /// Activate remote configuration
     /// - Parameter completion: Optional completion handler
-    public func activate(completion: (() -> Void)? = nil) {
-        remoteConfigClient?.activate(completion: completion)
+    public func activate() async throws {
+        try await remoteConfigClient?.activate()
     }
 } 
