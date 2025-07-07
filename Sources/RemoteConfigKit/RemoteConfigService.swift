@@ -8,7 +8,7 @@
 import Foundation
 
 /// Main service class for remote configuration management
-final class RemoteConfigService: @unchecked Sendable {
+final public class RemoteConfigService: @unchecked Sendable {
     public static let shared = RemoteConfigService()
     
     private var remoteConfigClient: RemoteConfigClient?
