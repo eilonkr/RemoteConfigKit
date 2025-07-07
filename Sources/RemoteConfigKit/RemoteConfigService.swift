@@ -8,21 +8,13 @@
 import Foundation
 
 /// Main service class for remote configuration management
-public class RemoteConfigService {
+final class RemoteConfigService: @unchecked Sendable {
     public static let shared = RemoteConfigService()
     
     private var remoteConfigClient: RemoteConfigClient?
     
     private init() { }
 
-    // MARK: - Public Configuration
-    
-    /// Configure the service with a remote config client
-    /// - Parameter client: The client to use for remote configuration
-    public func configure(with client: RemoteConfigClient) {
-        self.remoteConfigClient = client
-    }
-    
     // MARK: - Public Access
     
     /// Access remote configuration values by key
@@ -34,7 +26,8 @@ public class RemoteConfigService {
     
     /// Activate remote configuration
     /// - Parameter completion: Optional completion handler
-    public func activate() async throws {
-        try await remoteConfigClient?.activate()
+    @MainActor public func activate(client: RemoteConfigClient) async throws {
+        self.remoteConfigClient = client
+        try await client.activate()
     }
 } 
